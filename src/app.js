@@ -106,7 +106,6 @@ class TitanBot extends Client {
       );
       
       this.setupCronJobs();
-      startTwitchChecker(this);
     } catch (error) {
       logger.error('Failed to start bot:', error);
       process.exit(1);
