@@ -123,6 +123,13 @@ export function getGiveawayEntryKey(userId, giveawayId) {
 export function getGiveawayLockKey(messageId) {
     return `giveaway:lock:${messageId}`;
 }
+export function getStreamNotifyKey(guildId, twitchUsername) {
+    return `guild:${guildId}:streamnotify:${String(twitchUsername).toLowerCase()}`;
+}
+
+export function getStreamNotifyPrefix(guildId) {
+    return `guild:${guildId}:streamnotify:`;
+}
 
 /**
  * Legacy key patterns mapped to canonical builders.
