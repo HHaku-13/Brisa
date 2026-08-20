@@ -345,8 +345,8 @@ export async function checkBirthdays(client) {
         
         await channel.send({
           embeds: [{
-            title: '🎉 Happy Birthday! 🎂',
-            description: `A very happy birthday to ${mentionList}! Wishing you an amazing day! 🎈`,
+            title: '🎉 JOYEUX ANNIVERSAIRE ! 🎂',
+            description: `C'est le grand jour pour ${mentionList}! J'espère que tu passeras une sublime journée 🎈`,
             color: 0xff69b4,
             footer: { text: 'Birthday Bot' },
             timestamp: new Date()
