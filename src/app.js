@@ -17,6 +17,7 @@ import { initializeMusic } from './services/music/riffySetup.js';
 import { shutdownMusic } from './services/music/playerHandler.js';
 import pkg from '../package.json' with { type: 'json' };
 import { EXPECTED_SCHEMA_VERSION, EXPECTED_SCHEMA_LABEL } from './config/database/schemaVersion.js';
+import { checkStreamNotifies } from './services/twitchPoller.js';
 
 class TitanBot extends Client {
   constructor() {
@@ -248,11 +249,12 @@ class TitanBot extends Client {
     startServer(configuredPort, 0);
   }
 
-  setupCronJobs() {
+setupCronJobs() {
     cron.schedule('0 6 * * *', runSafeTask('birthday_check', () => checkBirthdays(this)));
     cron.schedule('* * * * *', runSafeTask('giveaway_check', () => checkGiveaways(this)));
     cron.schedule('*/15 * * * *', runSafeTask('counter_update', () => this.updateAllCounters()));
-  }
+    cron.schedule('*/2 * * * *', runSafeTask('streamnotify_check', () => checkStreamNotifies(this))); // <- ajout
+}
 
   async updateAllCounters() {
     if (!this.db) {
