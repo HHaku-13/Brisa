@@ -18,7 +18,6 @@ import { shutdownMusic } from './services/music/playerHandler.js';
 import pkg from '../package.json' with { type: 'json' };
 import { EXPECTED_SCHEMA_VERSION, EXPECTED_SCHEMA_LABEL } from './config/database/schemaVersion.js';
 import twitchCommand from './commands/Twitch/twitch.js';
-import { startTwitchChecker } from './commands/twitch.js';
 
 class TitanBot extends Client {
   constructor() {
